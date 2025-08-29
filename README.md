@@ -1,8 +1,8 @@
-# Secure Password Generator - Extensión para Chrome
+# Generador de contraseñas - miGEN
 
 [Captura](https://i.imgur.com/CEZE2Q5.png) 
 
-Un generador de contraseñas seguro, moderno y de código abierto que se ejecuta como una extensión en tu navegador. Creado con un enfoque en la seguridad, la privacidad y una excelente experiencia de usuario. Esta herramienta genera contraseñas complejas, memorables y códigos PIN directamente en tu dispositivo, asegurando que tus claves nunca salgan de tu navegador.
+Un generador de contraseñas seguro, moderno y de código abierto, creado con un enfoque en la seguridad, la privacidad y una excelente experiencia de usuario. Esta herramienta genera contraseñas complejas, memorables y códigos PIN directamente en tu dispositivo, asegurando que tus claves nunca salgan de tu navegador.
 
 ---
 
