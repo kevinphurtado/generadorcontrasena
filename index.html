@@ -1,253 +1,92 @@
-<!DOCTYPE html>
+|<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title data-translate-key="meta_title">Generador de Contraseñas Seguro</title>
-  <meta name="description" data-translate-key="meta_description" content="Generador de contraseñas seguras y aleatorias con opciones de personalización, entropía y tiempo de crackeo." />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="img/ico.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-<script  src="https://www.paypal.com/sdk/js?client-id=BAAowbkGbCrbEnx8RrBHz8qELfBlAeQLKHQ0XBqpc1w2g0btRFSOg8iLhzqU6m2kAwiBtrKK1WRGCTNuco&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generador & Verificador de Contraseñas</title>
+    <meta name="description" content="Una herramienta todo-en-uno para generar y verificar la seguridad de tus contraseñas. Funciona 100% en tu navegador para garantizar la privacidad." />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="https://chococreativo.com.co/proyectos/v-c/img/ico.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 </head>
-<body>
-  <div class="top-utils">
-    <button id="translateBtn" class="util-btn" title="Translate to English/Español"><i class="fas fa-language"></i></button>
-    <button id="themeBtn" class="util-btn" title="Cambiar tema"><i class="fas fa-moon"></i></button>
-  </div>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5CGSDVQG95"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  <div class="container">
-    <header>
-      <h1 data-translate-key="main_title">Generador de contraseñas seguro</h1>
-      <p data-translate-key="subtitle">Cree contraseñas fuertes y seguras al instante.</p>
+  gtag('config', 'G-5CGSDVQG95');
+</script>
+<body>
+    <div class="page-background"></div>
+
+    <header class="page-header">
+        <div class="app-switcher">
+            <label class="toggle-switch">
+                <input type="checkbox" id="appToggle" />
+                <span class="slider"></span>
+                <span class="label-text generator-label"><i class="fas fa-key"></i> <span data-translate-key="nav_generator">Generador</span></span>
+                <span class="label-text verifier-label"><i class="fas fa-shield-halved"></i> <span data-translate-key="nav_verifier">Verificador</span></span>
+            </label>
+        </div>
+        <div class="controls">
+            <button class="control-btn" id="translateBtn" title="Translate"><i class="fas fa-language"></i></button>
+            <button class="control-btn" id="themeBtn" title="Cambiar tema"><i class="fas fa-moon"></i></button>
+        </div>
     </header>
 
-    <div class="password-display-container">
-      <input type="text" id="passwordOutput" readonly data-translate-key="placeholder_generating" placeholder="Generando..."/>
-      <button id="qrBtn" class="icon-btn" title="Generar código QR" data-translate-title-key="qr_code_btn_title"><i class="fa-solid fa-qrcode"></i></button>
-      <button id="copyBtn" class="icon-btn" title="Copiar contraseña" data-translate-title-key="copy_btn_title"><i class="fa-regular fa-copy"></i></button>
-      <button id="regenerateBtn" class="icon-btn" title="Generar nueva contraseña" data-translate-title-key="regenerate_btn_title"><i class="fa-solid fa-arrows-rotate"></i></button>
-    </div>
-
-    <div id="complexityCheck" class="complexity-check"></div>
-
-    <div class="strength-meter-container">
-      <div class="strength-bar" id="strengthBar"></div>
-    </div>
-
-    <div class="entropy-card" id="entropyCard">
-      <div class="entropy-row">
-        <span class="entropy-label" data-translate-key="entropy_label">Entropía estimada</span>
-        <span id="entropyValue" class="entropy-value">—</span>
-      </div>
-      <div class="entropy-row">
-        <span class="entropy-label" data-translate-key="cracktime_label">Tiempo de crackeo</span>
-        <span id="crackTimeValue" class="entropy-value">—</span>
-      </div>
-      <small class="entropy-note" data-translate-key="cracktime_note">
-        Estimación con fuerza bruta (~1×10⁹ intentos/seg), promedio 50% del espacio.
-      </small>
-    </div>
-
-    <div class="options-container">
-      <div class="generate-type-selector">
-        <button id="randomTypeBtn" class="active" data-translate-key="type_random">Aleatoria</button>
-        <button id="memorableTypeBtn" data-translate-key="type_memorable">Memorizable</button>
-        <button id="pinTypeBtn" data-translate-key="type_pin">PIN</button>
-      </div>
-
-      <div id="random-options-wrapper">
-        <div class="length-slider-container">
-          <label for="passwordLength" data-translate-key="option_length">Longitud de la contraseña</label>
-          <div class="slider-wrapper">
-            <span>6</span>
-            <input type="range" id="passwordLength" min="6" max="64" value="16"/>
-            <span>64</span>
-            <span id="lengthValue" class="slider-value">16</span>
-          </div>
+    <main id="app-container">
+        </main>
+    
+    <footer>
+        
+    <div class="footer-content">
+        <div class="footer-column">
+            <p data-translate-key="footer_developed_by">© 2025 Desarrollado por </p>
+            <a href="https://chococreativo.com.co/proyectos" target="_blank">Chocó Creativo 🖤</a>
         </div>
-
-        <div class="character-options">
-          <h3 data-translate-key="option_include">Incluir:</h3>
-          <div class="checkbox-group">
-            <div class="checkbox-item checkbox-grid-item"><input type="checkbox" id="uppercase" checked/><label for="uppercase">A-Z</label></div>
-            <div class="checkbox-item checkbox-grid-item"><input type="checkbox" id="lowercase" checked/><label for="lowercase">a-z</label></div>
-            <div class="checkbox-item checkbox-grid-item"><input type="checkbox" id="numbers" checked/><label for="numbers">0-9</label></div>
-            <div class="checkbox-item checkbox-grid-item"><input type="checkbox" id="symbols" checked/><label for="symbols">!@#$</label></div>
-          </div>
+        
+        <div class="footer-column">
+            <nav class="footer-links">
+                <a href="#" class="modal-trigger" data-modal="privacy-modal" data-translate-key="footer_privacy">Privacidad 🔒</a>
+            </nav>
         </div>
-      </div>
-
-      <div id="memorable-options-wrapper" style="display:none;">
-        <div class="length-slider-container">
-          <label for="wordCount" data-translate-key="option_word_count">Número de palabras</label>
-          <div class="slider-wrapper">
-            <span>3</span>
-            <input type="range" id="wordCount" min="3" max="8" value="4"/>
-            <span>8</span>
-            <span id="wordCountValue" class="slider-value">4</span>
-          </div>
+        <div class="footer-column">
+            <button class="action-btn modal-trigger" data-modal="donate-modal" data-translate-key="donate_button">Donar</button>
         </div>
-        <div class="memorable-options">
-          <h3 data-translate-key="option_memorable_options">Opciones:</h3>
-          <div class="checkbox-group">
-            <div class="checkbox-item checkbox-grid-item"><input type="checkbox" id="memorableCapitalize" checked/><label for="memorableCapitalize" data-translate-key="option_capitalize">Capitalizar</label></div>
-            <div class="checkbox-item checkbox-grid-item"><input type="checkbox" id="memorableNumbers" checked/><label for="memorableNumbers" data-translate-key="option_include_number">Número</label></div>
-            <div class="checkbox-item checkbox-grid-item"><input type="checkbox" id="memorableSymbols"/><label for="memorableSymbols" data-translate-key="option_include_symbol">Símbolo</label></div>
-            <div class="form-group checkbox-grid-item">
-              <label for="separator" data-translate-key="option_separator">Separador</label>
-              <select id="separator">
-                <option value="-" data-translate-key="separator_hyphen">Guión</option>
-                <option value="_" data-translate-key="separator_underscore">Guión bajo</option>
-                <option value="." data-translate-key="separator_dot">Punto</option>
-                <option value=" " data-translate-key="separator_space">Espacio</option>
-                <option value="" data-translate-key="separator_none">Ninguno</option>
-              </select>
+    </div>
+    <p class="open-source-msg"><i class="fa-solid fa-code-branch"></i> <span data-translate-key="footer_open_source">Herramienta de código libre</span></p>
+</footer>
+
+    <div id="copyMessage" class="copy-message" data-translate-key="copied_message">¡Copiado!</div>
+
+    <div id="ai-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2 data-translate-key="ai_modal_title">Consejos de la IA</h2>
+            <div id="ai-response-content">
+                <div class="spinner-container">
+                    <div class="spinner"></div>
+                    <p data-translate-key="ai_generating_tips">Generando consejos...</p>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-
-      <div id="pin-options-wrapper" style="display:none;">
-        <div class="length-slider-container">
-          <label for="pinLength" data-translate-key="option_pin_length">Longitud del PIN</label>
-          <div class="slider-wrapper">
-            <span>4</span>
-            <input type="range" id="pinLength" min="4" max="10" value="6"/>
-            <span>10</span>
-            <span id="pinLengthValue" class="slider-value">6</span>
-          </div>
-        </div>
-        <p class="pin-note" data-translate-key="pin_note">Los PIN usan únicamente dígitos (0–9).</p>
+    </div>
+    
+    <div id="privacy-modal" class="modal-overlay"><div class="modal-content"><button class="close-btn">&times;</button><h2>Política de privacidad</h2><p>Tu privacidad es nuestra prioridad. Todo el proceso de generación y verificación se realiza localmente en tu navegador. <strong>No guardamos, ni almacenamos, ni transmitimos ninguna de las contraseñas que generas o verificas.</strong></p></div></div>
+    <div id="donate-modal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="close-btn">&times;</button>
+        <h2 data-translate-key="donate_modal_title">Apoya este proyecto</h2>
+        <p data-translate-key="donate_modal_desc">Si esta herramienta te resulta útil, considera hacer una donación para apoyar su desarrollo y mantenimiento.</p>
+        <div id="paypal-container-5Y6FSK8RBQCQN"></div>
       </div>
     </div>
-
-    <p class="local-security-message" data-translate-key="local_security_message">
-      Esta herramienta utiliza JavaScript para generar contraseñas en tu navegador localmente. Estas contraseñas no se transmiten a nuestros servidores.
-    </p>
-  </div>
-
-  <section class="history-section">
-    <div class="history-container">
-      <h2 data-translate-key="history_title">Historial de contraseñas</h2>
-      <div id="passwordHistoryList">
-        <p class="no-history-message" data-translate-key="history_empty">No hay contraseñas en el historial.</p>
-      </div>
-      <div class="history-actions-footer">
-        <button id="exportCsvBtn" class="action-btn" style="display:none;" data-translate-key="history_export_csv">Exportar a CSV</button>
-        <button id="clearHistoryBtn" class="action-btn clear-btn" style="display:none;" data-translate-key="history_clear">Borrar historial</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="tips-section">
-    <div class="tips-container">
-      <h2 data-translate-key="tips_title">¿Necesitas repasar las prácticas recomendadas?</h2>
-      <p data-translate-key="tips_subtitle">Estos son nuestros consejos para crear contraseñas seguras. Céntrate en la <b>longitud</b>, la <b>complejidad</b> y la <b>exclusividad</b>.</p>
-      <div class="tips-grid">
-        <div class="tip-card">
-          <div class="icon-circle"><i class="fas fa-ruler-horizontal"></i></div>
-          <h3 data-translate-key="tip1_title">Larga</h3>
-          <p data-translate-key="tip1_desc">Cuanto más larga es una contraseña, más segura es. Una contraseña segura debe tener al menos 16 caracteres.</p>
-        </div>
-        <div class="tip-card">
-          <div class="icon-circle"><i class="fas fa-puzzle-piece"></i></div>
-          <h3 data-translate-key="tip2_title">Compleja</h3>
-          <p data-translate-key="tip2_desc">Utiliza una combinación de letras mayúsculas, minúsculas, números y símbolos para formar una cadena impredecible.</p>
-        </div>
-        <div class="tip-card">
-          <div class="icon-circle"><i class="fas fa-key"></i></div>
-          <h3 data-translate-key="tip3_title">Única</h3>
-          <p data-translate-key="tip3_desc">Cada cuenta debe tener una contraseña única. Reutilizar contraseñas es uno de los mayores riesgos de seguridad.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="faq-section">
-    <div class="faq-container">
-      <h2 data-translate-key="faq_title">Preguntas frecuentes</h2>
-      <p data-translate-key="faq_subtitle">¿Tienes alguna pregunta? ¡Encontrarás las respuestas aquí!</p>
-      <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-question" role="button" aria-expanded="false">
-            <span data-translate-key="faq1_q">¿Es seguro usar este generador?</span>
-            <i class="fas fa-chevron-down faq-toggle"></i>
-          </div>
-          <div class="faq-answer"><p data-translate-key="faq1_a">Sí. Las contraseñas se generan en tu navegador y nunca se envían a ningún servidor. Es 100% seguro y privado.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" role="button" aria-expanded="false">
-            <span data-translate-key="faq2_q">¿Por qué no debería crear mis propias contraseñas?</span>
-            <i class="fas fa-chevron-down faq-toggle"></i>
-          </div>
-          <div class="faq-answer"><p data-translate-key="faq2_a">Los humanos tendemos a crear patrones predecibles (fechas, nombres, secuencias). Un generador crea contraseñas verdaderamente aleatorias, que son casi imposibles de adivinar.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" role="button" aria-expanded="false">
-            <span data-translate-key="faq3_q">¿Cuál es la contraseña más segura?</span>
-            <i class="fas fa-chevron-down faq-toggle"></i>
-          </div>
-          <div class="faq-answer"><p data-translate-key="faq3_a">La más segura es una contraseña larga (más de 16 caracteres) que combina mayúsculas, minúsculas, números y símbolos, o una frase de contraseña memorable de 4 o más palabras.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-column">
-        <div class="footer-logo"><span>Mi Generador App</span></div>
-        <p class="footer-tagline" data-translate-key="footer_tagline"> Seguridad digital a tu alcance.</p>
-        <img src="img/miapp.png" alt="Logo de Mi Generador App" width="100" height="100"/>
-      </div>
-      <div class="footer-column">
-        <h3 data-translate-key="footer_info">Información</h3>
-        <ul class="links-list">
-          <li><a href="#" class="modal-trigger" data-modal="privacy-modal" data-translate-key="footer_privacy">Política de privacidad</a></li>
-          <li><a href="#" class="modal-trigger" data-modal="products-modal" data-translate-key="footer_products">Política de productos</a></li>
-          <li><a href="#" class="modal-trigger" data-modal="legal-modal" data-translate-key="footer_legal">Información legal</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3 data-translate-key="footer_extensions">Extensiones</h3>
-        <a href="#" class="extension-btn" data-translate-key="footer_add_extension">Añadir a Chrome</a>
-        <div class="browser-logos">
-          <img src="img/cromo.png" alt="Logo de Chrome" width="110" height="50"/>
-        </div>
-      </div>
-    </div>
-    <div class="copyright-container">
-        <div class="copyright-text">
-            © 2025 Desarrollado por el equipo de <a href="https://chococreativo.com.co/proyectos" target="_blank">Chocó Creativo 🖤</a>
-        </div>
-        <button class="action-btn modal-trigger" data-modal="donate-modal" data-translate-key="donate_button">Donar</button>
-    </div>
-  </footer>
-
-  <div id="copyMessage" class="copy-message" data-translate-key="copied_message">¡Copiado!</div>
-
-  <div id="privacy-modal" class="modal"><div class="modal-content"><span class="close-btn">&times;</span><h2>🛡️ Política de privacidad</h2><p>Tu privacidad es nuestra prioridad, en este generador de contraseñas <strong>no guarda, ni almacena, ni transmite ninguna de las contraseñas que generas.</strong> Todo el proceso se realiza localmente en tu navegador. <br><br>No recopilamos ninguna información personal o de uso.</br></br></p></div></div>
-  <div id="products-modal" class="modal"><div class="modal-content"><span class="close-btn">&times;</span><h2>📦 Política Desarrollo</h2><p>Este aplicativo web es una <strong> herramienta gratuita, no ofrecemos productos adicionales de pago ni planes de suscripción.</strong> <br><br>El objetivo es proporcionar una herramienta útil para mejorar la seguridad en línea.</br></br></p></div></div>
-  <div id="legal-modal" class="modal"><div class="modal-content"><span class="close-btn">&times;</span><h2>⚖️ Información legal</h2><p>Esta herramienta se proporciona "tal cual" sin garantía de ningún tipo, no nos hacemos responsables de ningún daño o pérdida que pueda surgir del uso de este servicio. <br><br><strong>El uso de esta herramienta es bajo tu propio riesgo.</br></br></strong></p></div></div>
-  <div id="qrModal" class="modal"><div class="modal-content"><span class="close-btn">&times;</span><h2 data-translate-key="qr_modal_title">Código QR</h2><div id="qrcode"></div><p class="modal-warning" data-translate-key="qr_modal_warning">No compartas este QR públicamente.</p></div></div>
-  
-  <div id="donate-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <h2 data-translate-key="donate_modal_title">Apoya este proyecto</h2>
-      <p data-translate-key="donate_modal_desc">Si esta herramienta te resulta útil, considera hacer una donación para apoyar su desarrollo y mantenimiento.</p>
-      <div id="paypal-container-5Y6FSK8RBQCQN"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "5Y6FSK8RBQCQN",
-  }).render("#paypal-container-5Y6FSK8RBQCQN")
-</script>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAowbkGbCrbEnx8RrBHz8qELfBlAeQLKHQ0XBqpc1w2g0btRFSOg8iLhzqU6m2kAwiBtrKK1WRGCTNuco&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+    <script src="script.js"></script>
 </body>
-
+<!-- Apoyado IA y desarrollado por Kevin Posso Hurtado 2025🖤 -->
 </html>
