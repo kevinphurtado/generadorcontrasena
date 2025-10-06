@@ -1,78 +1,78 @@
-# Generador de contraseñas - miGEN
+# Generador y verificador de contraseñas
 
-[Captura](https://i.imgur.com/CEZE2Q5.png) 
+Una aplicación web ligera que genera contraseñas aleatorias, frases memorizables y PIN seguros directamente en tu navegador. También permite verificar la fortaleza de tus claves y, de forma opcional, comprobar si han aparecido en filtraciones conocidas mediante la API pública de *Have I Been Pwned*.
 
-Un generador de contraseñas seguro, moderno y de código abierto, creado con un enfoque en la seguridad, la privacidad y una excelente experiencia de usuario. Esta herramienta genera contraseñas complejas, memorables y códigos PIN directamente en tu dispositivo, asegurando que tus claves nunca salgan de tu navegador.
+La herramienta está pensada para funcionar completamente sin servicios de terceros: todos los cálculos se ejecutan en el cliente y no se cargan scripts de analítica o publicidad.
 
----
+## ✨ Características principales
 
-## ✨ Características Principales
+- **Tres modos de generación:** aleatorio, frase memorizable y PIN.
+- **Personalización completa:** ajusta longitud, conjuntos de caracteres y separadores para adaptarte a diferentes políticas de seguridad.
+- **Historial local:** guarda las contraseñas que copias y permite exportarlas a CSV o limpiar el historial en un clic.
+- **Interfaz bilingüe (ES/EN):** cambia de idioma al instante; las traducciones se cargan desde archivos JSON independientes.
+- **Accesible por diseño:** controles con texto descriptivo, atajos visuales y mensajes con `aria-live`.
+- **Verificador con comprobación opcional de filtraciones:** habilítalo sólo cuando lo necesites; la comprobación usa k-anonymity y nunca envía la contraseña en texto claro.
+- **Tema claro/oscuro persistente** guardado en `localStorage`.
 
-* **Tres Modos de Generación:**
-    * `Aleatorio`: Crea contraseñas robustas con una mezcla personalizable de mayúsculas, minúsculas, números y símbolos.
-    * `Memorizable`: Genera frases de contraseña (passphrases) fáciles de recordar pero difíciles de descifrar, basadas en palabras.
-    * `PIN`: Crea códigos PIN numéricos de longitud variable.
-* **Métricas de Seguridad Avanzadas:**
-    * **Medidor de Fuerza Visual:** Evalúa la complejidad de tu contraseña en tiempo real.
-    * **Cálculo de Entropía:** Mide la aleatoriedad real de tu contraseña en bits.
-    * **Estimación de Tiempo de Crackeo:** Calcula cuánto tiempo tomaría a un atacante descifrar tu contraseña mediante fuerza bruta.
-* **100% Seguro y Privado:**
-    * Todas las contraseñas se generan **localmente en tu navegador** utilizando la API `window.crypto` para una aleatoriedad criptográficamente segura.
-    * Ninguna contraseña o dato es transmitido o almacenado fuera de tu dispositivo.
-* **Utilidades Adicionales:**
-    * **Historial Local:** Guarda tus últimas contraseñas generadas para un acceso rápido (con opción de exportar a `.csv`).
-    * **Código QR:** Transfiere de forma segura una contraseña a tu móvil escaneando un código QR.
-    * **Soporte Multilingüe:** Interfaz disponible en Español e Inglés.
-    * **Tema Claro y Oscuro:** Se adapta a las preferencias de tu sistema.
+## 🧰 Requisitos
 
----
+- Node.js >= 18 para ejecutar las pruebas automatizadas.
+- Un navegador moderno (Chrome, Firefox, Edge o Safari) para usar la aplicación.
 
-## 🚀 Instalación
+## 🚀 Puesta en marcha
 
-Tienes dos formas de instalar y usar esta extensión:
+### Servir la aplicación
 
-### 1. Desde la Chrome Web Store (Próximamente)
+1. Clona el repositorio y entra a la carpeta:
+   ```bash
+   git clone https://github.com/kevinphurtado/generadorcontrasena.git
+   cd generadorcontrasena
+   ```
+2. Sirve la carpeta como un sitio estático. Puedes usar `npm run preview` que levanta un servidor HTTP mínimo:
+   ```bash
+   npm run preview
+   ```
+3. Abre `http://localhost:4173` en tu navegador.
 
-*Una vez que tu extensión sea publicada, podrás añadir el enlace aquí para una instalación sencilla.*
+> También puedes utilizar cualquier otro servidor estático (`python -m http.server`, `serve`, `http-server`, etc.).
 
-`[Enlace a la Chrome Web Store]`
+### Ejecutar pruebas
 
-### 2. Instalación Local (Para Desarrolladores)
+Se incluyen pruebas unitarias usando el *test runner* nativo de Node (`node --test`) para validar la lógica de generación y comprobación de contraseñas:
 
-Si deseas probar la versión de desarrollo:
+```bash
+npm test
+```
 
-1.  **Descarga o clona este repositorio:**
-    ```bash
-    git clone [https://github.com/kevinphurtado/generadorcontrasena.git](https://github.com/kevinphurtado/generadorcontrasena.git)
-    ```
-2.  Abre Google Chrome y ve a la página de extensiones: `chrome://extensions`.
-3.  Activa el **"Modo de desarrollador"** en la esquina superior derecha.
-4.  Haz clic en **"Cargar descomprimida"**.
-5.  Selecciona la carpeta del proyecto que clonaste.
-6.  ¡Listo! El ícono de la extensión aparecerá en tu barra de herramientas.
+## 🗂️ Estructura del proyecto
 
----
+```
+├── index.html            # Entrada principal (solo carga CSS y JS modular)
+├── style.css             # Estilos globales, con soporte light/dark
+├── js/
+│   ├── main.js           # Punto de entrada que orquesta vistas y estado
+│   ├── state.js          # Gestión de estado y sincronización con localStorage
+│   ├── generator.js      # Lógica de la vista de generación de contraseñas
+│   ├── verifier.js       # Lógica de la vista de verificación
+│   ├── modals.js         # Gestión accesible de modales
+│   ├── i18n.js           # Carga de traducciones JSON y utilidades i18n
+│   └── lib/
+│       ├── passwordGenerator.js
+│       └── passwordVerifier.js
+├── translations/         # Archivos JSON con textos en español e inglés
+└── tests/                # Pruebas unitarias (Vitest)
+```
 
-## 🛠️ Tecnologías Utilizadas
+## 🤝 Cómo contribuir
 
-Este proyecto fue construido desde cero con un enfoque en la simplicidad y el rendimiento, utilizando tecnologías web estándar:
-
-* **HTML5:** Para la estructura semántica del contenido.
-* **CSS3:** Para el diseño y la tematización (claro/oscuro) utilizando variables CSS.
-* **JavaScript (ES6+):** Lógica de la aplicación sin dependencias de frameworks (`Vanilla JS`).
-* **Web Crypto API:** Se utiliza `window.crypto.getRandomValues()` para garantizar una generación de números aleatorios criptográficamente segura, fundamental para la creación de contraseñas robustas.
-
----
-
-## 👨‍💻 Autor
-
-Diseñado y desarrollado por **Kevin Hurtado**.
-
-* **Portafolio:** [chococreativo.com.co/proyectos](https://chococreativo.com.co/proyectos)
-* **GitHub:** [@kevinphurtado](https://github.com/kevinphurtado)
-
----
+1. Crea un *fork* del repositorio.
+2. Genera una rama descriptiva (`feature/mejora-accesibilidad`).
+3. Realiza tus cambios siguiendo estas pautas:
+   - Mantén el código en ES Modules sin dependencias innecesarias.
+   - No introduzcas scripts externos que comprometan la privacidad.
+   - Asegúrate de ejecutar `npm test` antes de abrir un pull request.
+4. Envía tu PR describiendo claramente la mejora.
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+Este proyecto se distribuye bajo la licencia [MIT](LICENSE). ¡Si lo encuentras útil, comparte el repositorio o envía tus mejoras!

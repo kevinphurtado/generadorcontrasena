@@ -1,96 +1,83 @@
-|<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Generador & Verificador de Contraseñas</title>
-    <meta name="description" content="Una herramienta todo-en-uno para generar y verificar la seguridad de tus contraseñas. Funciona 100% en tu navegador para garantizar la privacidad." />
-    <meta name="hibp-verify" content="dweb_ahdeijzfd1heuyzt506088pw" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="https://chococreativo.com.co/proyectos/v-c/img/ico.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1054325758661906" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generador &amp; Verificador de Contraseñas</title>
+  <meta name="description" content="Genera y comprueba contraseñas seguras directamente en tu navegador, sin depender de servicios externos." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" type="image/png" href="img/ico.png" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5CGSDVQG95"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5CGSDVQG95');
-</script>
 <body>
-    <div class="page-background"></div>
+  <div class="page-background" aria-hidden="true"></div>
+  <header class="page-header" role="banner">
+    <div class="app-switcher">
+      <label class="toggle-switch" for="appToggle">
+        <input type="checkbox" id="appToggle" data-translate-attrs="aria-label:toggle_app_label" aria-label="Cambiar entre generador y verificador" />
+        <span class="slider" aria-hidden="true"></span>
+        <span class="label-text generator-label">
+          <span aria-hidden="true">🔐</span>
+          <span data-translate-key="nav_generator">Generador</span>
+        </span>
+        <span class="label-text verifier-label">
+          <span aria-hidden="true">🛡️</span>
+          <span data-translate-key="nav_verifier">Verificador</span>
+        </span>
+      </label>
+    </div>
+    <div class="controls" role="group" aria-label="Preferencias de la aplicación">
+      <button class="control-btn" id="translateBtn" type="button" data-translate-attrs="aria-label:control_language_label">
+        <span class="icon" aria-hidden="true">🌐</span>
+      </button>
+      <button class="control-btn" id="themeBtn" type="button" data-translate-attrs="aria-label:control_theme_label" aria-pressed="false">
+        <span class="icon" data-theme-icon aria-hidden="true">🌙</span>
+      </button>
+    </div>
+  </header>
 
-    <header class="page-header">
-        <div class="app-switcher">
-            <label class="toggle-switch">
-                <input type="checkbox" id="appToggle" />
-                <span class="slider"></span>
-                <span class="label-text generator-label"><i class="fas fa-key"></i> <span data-translate-key="nav_generator">Generador</span></span>
-                <span class="label-text verifier-label"><i class="fas fa-shield-halved"></i> <span data-translate-key="nav_verifier">Verificador</span></span>
-            </label>
-        </div>
-        <div class="controls">
-            <button class="control-btn" id="translateBtn" title="Translate"><i class="fas fa-language"></i></button>
-            <button class="control-btn" id="themeBtn" title="Cambiar tema"><i class="fas fa-moon"></i></button>
-        </div>
-    </header>
+  <main id="app-container" role="main"></main>
 
-    <main id="app-container">
-        </main>
-    
-    <footer>
-        
+  <footer role="contentinfo">
     <div class="footer-content">
-        <div class="footer-column">
-            <p data-translate-key="footer_developed_by">© 2025 Desarrollado por </p>
-            <a href="https://chococreativo.com.co/proyectos" target="_blank">Chocó Creativo 🖤</a>
-        </div>
-        
-        <div class="footer-column">
-            <nav class="footer-links">
-                <a href="#" class="modal-trigger" data-modal="privacy-modal" data-translate-key="footer_privacy">Privacidad 🔒</a>
-            </nav>
-        </div>
-        <div class="footer-column">
-            <button class="action-btn modal-trigger" data-modal="donate-modal" data-translate-key="donate_button">Donar</button>
-        </div>
+      <section class="footer-column" aria-labelledby="footer-project">
+        <h2 id="footer-project" data-translate-key="footer_heading_project">Proyecto</h2>
+        <p>
+          <span data-translate-key="footer_developed_by">© 2025 Desarrollado por</span>
+          <a href="https://chococreativo.com.co/proyectos" target="_blank" rel="noopener">Chocó Creativo 🖤</a>
+        </p>
+      </section>
+      <section class="footer-column" aria-labelledby="footer-support">
+        <h2 id="footer-support" data-translate-key="footer_heading_support">Soporte</h2>
+        <button class="action-link modal-trigger" data-modal="donate-modal" data-translate-key="donate_button" type="button"></button>
+      </section>
+      <section class="footer-column" aria-labelledby="footer-legal">
+        <h2 id="footer-legal" data-translate-key="footer_heading_legal">Legal</h2>
+        <button class="action-link modal-trigger" data-modal="privacy-modal" data-translate-key="footer_privacy" type="button"></button>
+      </section>
     </div>
-    <p class="open-source-msg"><i class="fa-solid fa-code-branch"></i> <span data-translate-key="footer_open_source">Herramienta de código libre</span></p>
-</footer>
+    <p class="open-source-msg" data-translate-key="footer_open_source">Herramienta de código libre</p>
+  </footer>
 
-    <div id="copyMessage" class="copy-message" data-translate-key="copied_message">¡Copiado!</div>
+  <div id="copyMessage" class="copy-message" role="status" aria-live="polite" aria-hidden="true"></div>
 
-    <div id="ai-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-btn">&times;</button>
-            <h2 data-translate-key="ai_modal_title">Consejos de la IA</h2>
-            <div id="ai-response-content">
-                <div class="spinner-container">
-                    <div class="spinner"></div>
-                    <p data-translate-key="ai_generating_tips">Generando consejos...</p>
-                </div>
-            </div>
-        </div>
+  <div id="privacy-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close-btn" type="button" aria-label="Cerrar">×</button>
+      <h2 data-translate-key="privacy_modal_title">Política de privacidad</h2>
+      <p data-translate-key="privacy_modal_desc">Todo el proceso se ejecuta localmente en tu navegador. No almacenamos ni transmitimos contraseñas.</p>
     </div>
-    
-    <div id="privacy-modal" class="modal-overlay"><div class="modal-content"><button class="close-btn">&times;</button><h2>Política de privacidad</h2><p>Tu privacidad es nuestra prioridad. Todo el proceso de generación y verificación se realiza localmente en tu navegador. <strong>No guardamos, ni almacenamos, ni transmitimos ninguna de las contraseñas que generas o verificas.</strong></p></div></div>
-    <div id="donate-modal" class="modal-overlay">
-      <div class="modal-content">
-        <button class="close-btn">&times;</button>
-        <h2 data-translate-key="donate_modal_title">Apoya este proyecto</h2>
-        <p data-translate-key="donate_modal_desc">Si esta herramienta te resulta útil, considera hacer una donación para apoyar su desarrollo y mantenimiento.</p>
-        <div id="paypal-container-5Y6FSK8RBQCQN"></div>
-      </div>
+  </div>
+
+  <div id="donate-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close-btn" type="button" aria-label="Cerrar">×</button>
+      <h2 data-translate-key="donate_modal_title">Apoya este proyecto</h2>
+      <p data-translate-key="donate_modal_desc">Si esta herramienta te resulta útil, considera hacer una donación para apoyar su desarrollo y mantenimiento.</p>
+      <div id="paypal-container-5Y6FSK8RBQCQN" aria-live="polite"></div>
     </div>
-    
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAowbkGbCrbEnx8RrBHz8qELfBlAeQLKHQ0XBqpc1w2g0btRFSOg8iLhzqU6m2kAwiBtrKK1WRGCTNuco&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
-    <script src="script.js"></script>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
 </body>
-<!-- Apoyado IA y desarrollado por Kevin Posso Hurtado 2025🖤 -->
-
 </html>
-
