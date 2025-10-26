@@ -409,9 +409,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.elements.pinTypeBtn.addEventListener('click', () => this.switchType('pin'));
 
                 // Listeners de opciones (sliders)
-                this.elements.passwordLengthInput.addEventListener('input', () => updateAndRegen(this.elements.passwordLengthInput, this.elements.lengthValueSpan));
-                this.elements.wordCountInput.addEventListener('input', () => updateAndRegen(this.elements.wordCountInput, this.elements.wordCountValueSpan));
-                this.elements.pinLengthInput.addEventListener('input', () => updateAndRegen(this.elements.pinLengthInput, this.elements.pinLengthValueSpan));
+                // Usar 'input' solo para actualizar el número (fluido)
+                this.elements.passwordLengthInput.addEventListener('input', () => this.elements.lengthValueSpan.textContent = this.elements.passwordLengthInput.value);
+                this.elements.wordCountInput.addEventListener('input', () => this.elements.wordCountValueSpan.textContent = this.elements.wordCountInput.value);
+                this.elements.pinLengthInput.addEventListener('input', () => this.elements.pinLengthValueSpan.textContent = this.elements.pinLengthInput.value);
+                
+                // Usar 'change' para generar la contraseña (solo al soltar)
+                this.elements.passwordLengthInput.addEventListener('change', regen);
+                this.elements.wordCountInput.addEventListener('change', regen);
+                this.elements.pinLengthInput.addEventListener('change', regen);
                 
                 // Listeners de opciones (checkboxes/select)
                 document.querySelectorAll('#random-options input, #memorable-options input, #memorable-options select').forEach(el => el.addEventListener('change', regen));
@@ -434,6 +440,26 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     });
                 });
+
+                // Hacer clicable el DIV padre del checkbox ---
+
+                document.querySelectorAll('.gen-checkbox-item').forEach(item => {
+                    // Ignorar el grupo del 'select'
+                    if (item.classList.contains('select-group')) return;
+
+                    item.addEventListener('click', (e) => {
+                        // Si el clic NO fue en la etiqueta (que ya funciona sola)
+                        if (e.target.tagName !== 'LABEL') {
+                            const input = item.querySelector('input[type=checkbox]');
+                            if (input && e.target !== input) {
+                                // Simular un clic en el input, lo que dispara el 'change'
+                                input.click(); 
+                            }
+                        }
+                    });
+                });
+                
+
             },
 
             switchType(type) {
