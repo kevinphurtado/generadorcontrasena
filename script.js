@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         generator: {
             currentGenerationType: 'random',
-        }
+        },
+        pendingPassword: null,
     };
 
     // ==========================================================
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             history_title: "Historial de contraseñas (Cifrado)", history_empty: "No hay contraseñas en el historial.",
             history_locked: "Historial cifrado. Desbloquee para ver.", history_unlock: "Desbloquear Historial",
             history_export_csv: "Exportar a CSV", history_clear: "Borrar historial",
+            history_clear_confirm: "¿Estás seguro de que quieres borrar todo el historial? Esta acción no se puede deshacer.", 
             tips_title: "¿Necesitas repasar las prácticas recomendadas?", tips_subtitle: "Céntrate en la longitud, la complejidad y la exclusividad.",
             tip1_title:"Larga", tip1_desc:"Una contraseña segura debe tener al menos 16 caracteres.",
             tip2_title:"Compleja", tip2_desc:"Utiliza una combinación de letras, números y símbolos.",
@@ -73,6 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ai_modal_title: "Consejos de la IA", ai_generating_tips: "Generando consejos...",
             mp_modal_title: "Contraseña Maestra", mp_modal_desc: "Introduce una clave para descifrar y gestionar tu historial de contraseñas guardadas.",
             mp_modal_submit: "Desbloquear Historial", mp_error_message: "Clave Maestra incorrecta.",
+            mp_modal_setup_title: "Crea tu Clave Maestra", 
+            mp_modal_setup_desc: "Esta clave cifrará la contraseña que acabas de generar y todas las futuras. ¡No la olvides!",
+            mp_modal_setup_submit: "Crear y Guardar",
             ver_exposed_title: "¡Contraseña comprometida!", ver_exposed_desc: "Esta contraseña ha aparecido en %s filtraciones. ¡No la uses!",
             ver_secure_title: "¡Contraseña Segura!", ver_secure_desc: "¡Excelente! Tu contraseña cumple los criterios. El tiempo de crackeo estimado es de %s.",
             ver_weak_title: "Contraseña débil",
@@ -80,6 +85,36 @@ document.addEventListener('DOMContentLoaded', () => {
             ver_weak_sugg_length: "Longitud < 16, añade más caracteres.",
             ver_weak_sugg_complex: "Faltan mayúsculas, números o símbolos.",
             ver_weak_sugg_generic: "Añade más caracteres de diferentes tipos para aumentar la entropía.",
+            footer_description: "Herramienta de seguridad para generar y verificar contraseñas. 100% seguro y privado, funciona directamente en tu navegador.",
+            footer_tools_title: "Herramientas",
+            footer_resources_title: "Recursos",
+            footer_security_guide: "Guía de Seguridad",
+            footer_legal_title: "Legal",
+            footer_terms: "Términos de Uso",
+            footer_contribute_title: "Contribuir",
+            footer_suggest: "Sugerir Función",
+            footer_developed_by: "Desarrollado con",
+            footer_by: "por",
+            footer_copyright_base_text: "© 2025 miGenApp.",
+            footer_badge_open_source: "Código Abierto",
+            footer_badge_secure: "100% Seguro",
+            // Traducciones de Modales Legales/Soporte
+            privacy_modal_title: "Política de Privacidad",
+            privacy_modal_desc_p1: "La privacidad es el pilar de miGenApp. Esta herramienta está diseñada para funcionar **100% en tu navegador**. Esto significa:",
+            privacy_modal_list_item1: "**Sin Servidor:** Ningún dato, incluida tu Contraseña Maestra o las contraseñas generadas, se envía a un servidor externo.",
+            privacy_modal_list_item2: "**Almacenamiento Local:** Las contraseñas se guardan **cifradas** en tu navegador (localStorage) para que solo tú puedas acceder a ellas con tu Clave Maestra.",
+            privacy_modal_list_item3: "**Anonimato en Verificación:** El verificador de filtraciones utiliza la técnica de k-Anonimato (no se envía la contraseña completa) a la API de Have I Been Pwned.",
+            
+            terms_modal_title: "Términos de Uso",
+            terms_modal_desc_p1: "Al usar miGenApp, aceptas los siguientes términos:",
+            terms_modal_list_item1: "**Uso Personal:** Esta herramienta es para uso personal en la generación de contraseñas.",
+            terms_modal_list_item2: "**Responsabilidad del Usuario:** Eres el único responsable de recordar tu Contraseña Maestra y de la seguridad de las contraseñas que generas. El desarrollador no puede recuperar claves perdidas.",
+            terms_modal_list_item3: "**Limitación de Responsabilidad:** El desarrollador no será responsable de ninguna pérdida de datos o daños resultantes del uso (o incapacidad de uso) de esta aplicación.",
+            
+            donate_modal_thanks: "¡Gracias por ayudar a mantener miGenApp libre y funcionando!",
+            suggest_modal_title: "Sugerir una Función",
+            suggest_modal_desc: "¡Me encantaría escuchar tus ideas! La mejor manera de sugerir una nueva función o informar un error es enviándome un correo electrónico.",
+            suggest_modal_thanks: "Gracias por ayudar a mejorar miGenApp.",
         },
         en: {
             nav_generator: "Generator", nav_verifier: "Verifier",
@@ -96,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             history_title: "Password History (Encrypted)", history_empty: "No passwords in history.",
             history_locked: "Encrypted history. Unlock to view.", history_unlock: "Unlock History",
             history_export_csv: "Export to CSV", history_clear: "Clear History",
+            history_clear_confirm: "Are you sure you want to clear all history? This action cannot be undone.",
             tips_title: "Need a refresher on best practices?", tips_subtitle: "Focus on length, complexity, and uniqueness.",
             tip1_title:"Long", tip1_desc:"A strong password should be at least 16 characters long.",
             tip2_title:"Complex", tip2_desc:"Use a mix of letters, numbers, and symbols.",
@@ -125,6 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ai_modal_title: "AI Tips", ai_generating_tips: "Generating tips...",
             mp_modal_title: "Master Password", mp_modal_desc: "Enter a key to decrypt and manage your saved password history.",
             mp_modal_submit: "Unlock History", mp_error_message: "Incorrect Master Key.",
+            mp_modal_setup_title: "Create Your Master Key", 
+            mp_modal_setup_desc: "This key will encrypt the password you just generated and all future ones. Don't forget it!",
+            mp_modal_setup_submit: "Create & Save",
             ver_exposed_title: "Password Exposed!", ver_exposed_desc: "This password has appeared in %s data breaches. Do not use it!",
             ver_secure_title: "Secure Password!", ver_secure_desc: "Excellent! Your password meets all criteria. Estimated cracking time is %s.",
             ver_weak_title: "Weak Password",
@@ -132,6 +171,37 @@ document.addEventListener('DOMContentLoaded', () => {
             ver_weak_sugg_length: "Length < 16, add more characters.",
             ver_weak_sugg_complex: "Missing uppercase, numbers, or symbols.",
             ver_weak_sugg_generic: "Add more characters of different types to increase entropy.",
+            footer_description: "Security tool for generating and checking passwords. 100% secure and private, runs directly in your browser.",
+            footer_tools_title: "Tools",
+            footer_resources_title: "Resources",
+            footer_security_guide: "Security Guide",
+            footer_legal_title: "Legal",
+            footer_terms: "Terms of Use",
+            footer_contribute_title: "Contribute",
+            footer_suggest: "Suggest Feature",
+            footer_developed_by: "Developed with",
+            footer_by: "by",
+            footer_copyright_base_text: "© 2025 miGenApp.",
+            footer_badge_open_source: "Open Source",
+            footer_badge_secure: "100% Secure",
+            // Traducciones de Modales Legales/Soporte
+            privacy_modal_title: "Privacy Policy",
+            privacy_modal_desc_p1: "Privacy is the cornerstone of miGenApp. This tool is designed to run **100% in your browser**. This means:",
+            privacy_modal_list_item1: "**No Server:** No data, including your Master Key or generated passwords, is sent to an external server.",
+            privacy_modal_list_item2: "**Local Storage:** Passwords are saved **encrypted** in your browser (localStorage) so only you can access them with your Master Key.",
+            privacy_modal_list_item3: "**Verification Anonymity:** The breach checker uses the k-Anonymity technique (the full password is not sent) to the Have I Been Pwned API.",
+            
+            terms_modal_title: "Terms of Use",
+            terms_modal_desc_p1: "By using miGenApp, you agree to the following terms:",
+            terms_modal_list_item1: "**Personal Use:** This tool is for personal use in password generation.",
+            terms_modal_list_item2: "**User Responsibility:** You are solely responsible for remembering your Master Key and for the security of the passwords you generate. The developer cannot recover lost keys.",
+            terms_modal_list_item3: "**Limitation of Liability:** The developer shall not be liable for any data loss or damages resulting from the use (or inability to use) of this application.",
+            
+            donate_modal_thanks: "Thank you for helping keep miGenApp free and running!",
+            suggest_modal_title: "Suggest a Feature",
+            suggest_modal_desc: "I'd love to hear your ideas! The best way to suggest a new feature or report a bug is by sending me an email.",
+            suggest_modal_thanks: "Thank you for helping improve miGenApp.",
+
         }
     };
     
@@ -173,7 +243,10 @@ document.addEventListener('DOMContentLoaded', () => {
         donateModal: document.getElementById('donate-modal'),
         infoModal: document.getElementById('info-modal'),
         qrModal: document.getElementById('qr-modal'),
-        masterPasswordModal: document.getElementById('master-password-modal'), // NEW
+        masterPasswordModal: document.getElementById('master-password-modal'), 
+        mpModalTitle: document.getElementById('mpModalTitle'),
+        mpModalDesc: document.getElementById('mpModalDesc'),
+        mpAlertBox: document.getElementById('mpAlertBox'),
     };
     
     // ==========================================================
@@ -289,18 +362,33 @@ document.addEventListener('DOMContentLoaded', () => {
             const newKeyHash = this.hashMasterKey(masterKey);
 
             if (decryptedHistory !== null) {
-                // Caso 1: Desbloqueo exitoso. Puede ser la primera vez que se cifra o una clave recurrente.
+                // Caso 1: Desbloqueo exitoso.
                 state.passwordHistory = decryptedHistory;
                 state.isHistoryDecrypted = true;
                 
-                // Si el historial estaba vacío o si es la primera vez que se cifra, o si el hash no existe, lo guardamos.
                 if (!masterKeyHash || masterKeyHash !== newKeyHash) {
+                    // Si es la primera vez o la clave cambió, guardar el nuevo hash y cifrar
                     localStorage.setItem(MASTER_KEY_HASH_KEY, newKeyHash);
-                    // Sobreescribimos el historial cifrado con el hash de la clave, por si no existía el hash antes.
                     localStorage.setItem(ENCRYPTED_HISTORY_KEY, this.encryptHistory(newKeyHash));
                 }
                 
                 dom.masterPasswordModal.classList.remove('active');
+                
+                // Si una contraseña estaba "pendiente" esperando la clave, añadirla ahora.
+                if (state.pendingPassword) {
+                    const passToAdd = state.pendingPassword;
+                    state.pendingPassword = null; // Limpiar primero
+                    
+                    // Añadirla a la memoria (con comprobación de duplicados)
+                    if (!state.passwordHistory.some(item => item.password === passToAdd)) {
+                        state.passwordHistory.unshift({ id: Date.now(), password: passToAdd });
+                        if (state.passwordHistory.length > 50) state.passwordHistory.pop();
+                        
+                        // Volver a guardar el historial (ahora con la contraseña pendiente)
+                        localStorage.setItem(ENCRYPTED_HISTORY_KEY, this.encryptHistory(newKeyHash));
+                    }
+                }
+
                 appLogic.generator.renderPasswordHistory();
                 return true;
             } 
@@ -605,18 +693,33 @@ document.addEventListener('DOMContentLoaded', () => {
             },
 
             addPasswordToHistory(password) {
-                // Solo añadir si el historial está desbloqueado. Si está bloqueado, no lo almacenamos.
+                // Comprobar si existe una clave ANTES de hacer nada
+                const masterKeyHash = localStorage.getItem(MASTER_KEY_HASH_KEY);
+
+                if (!masterKeyHash) {
+                    // 1. No existe clave. Es la PRIMERA VEZ.
+                    state.pendingPassword = password; 
+                    
+                    // Configurar el modal para el modo 'SETUP' (Creación de Clave)
+                    dom.masterPasswordModal.classList.add('active', 'setup-mode'); 
+                    dom.mpModalTitle.textContent = getTranslation('mp_modal_setup_title');
+                    // Mostrar la alerta de 'crear clave'
+                    dom.mpAlertBox.style.display = 'flex'; 
+                    // Ocultar la descripción de 'desbloquear'
+                    dom.mpModalDesc.style.display = 'none'; 
+                    document.getElementById('masterPasswordSubmitBtn').textContent = getTranslation('mp_modal_setup_submit'); 
+                    
+                    return; // Detener la ejecución aquí
+                }
+
+                // Si la clave ya existe, proceder normalmente
                 if (!password || !state.isHistoryDecrypted || state.passwordHistory.some(item => item.password === password)) return; 
 
                 state.passwordHistory.unshift({ id: Date.now(), password });
                 if (state.passwordHistory.length > 50) state.passwordHistory.pop();
                 
-                // Cifrar y guardar
-                const masterKeyHash = localStorage.getItem(MASTER_KEY_HASH_KEY);
-                if (masterKeyHash) {
-                    const tempKey = masterKeyHash; // Usamos el hash como una clave temporal de cifrado/descifrado para el historial
-                    localStorage.setItem(ENCRYPTED_HISTORY_KEY, cryptoLogic.encryptHistory(tempKey));
-                }
+                // Cifrar y guardar (sabemos que masterKeyHash existe)
+                localStorage.setItem(ENCRYPTED_HISTORY_KEY, cryptoLogic.encryptHistory(masterKeyHash));
                 
                 this.renderPasswordHistory();
             },
@@ -900,7 +1003,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const masterPasswordError = document.getElementById('masterPasswordError');
         const toggleMasterPassword = document.getElementById('toggleMasterPassword');
 
-        if (masterPasswordInput && masterPasswordSubmitBtn) {
+        const mpModalTitle = document.getElementById('mpModalTitle');
+        const mpAlertBox = document.getElementById('mpAlertBox');
+
+        if (masterPasswordInput && masterPasswordSubmitBtn) { 
             masterPasswordSubmitBtn.addEventListener('click', async (e) => {
                 e.preventDefault();
                 masterPasswordError.style.display = 'none';
@@ -908,7 +1014,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const isSuccess = await cryptoLogic.unlockHistory(key);
                 if (isSuccess) {
+                    if (isSuccess) {
+                    // Resetear el modal al modo 'Desbloquear'
+                    dom.masterPasswordModal.classList.remove('setup-mode');
+                    if (mpModalTitle) mpModalTitle.textContent = getTranslation('mp_modal_title');
+                    if (masterPasswordSubmitBtn) masterPasswordSubmitBtn.textContent = getTranslation('mp_modal_submit');
+                    if (mpAlertBox) mpAlertBox.style.display = 'none';
+                    if (dom.mpModalDesc) dom.mpModalDesc.style.display = 'block';
+                    
                     masterPasswordInput.value = '';
+                    }
+
                     // El switchApp a generator ya está hecho en init(), solo renderizamos el historial.
                     if (state.currentApp === 'generator') appLogic.generator.renderPasswordHistory();
                 } else {
@@ -924,6 +1040,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     toggleMasterPassword.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
                  });
              }
+
+        
+
         }
     }
 
@@ -965,12 +1084,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!modal.dataset.closeListenerAttached) {
                 modal.addEventListener('click', e => {
                     if (e.target === modal || e.target.closest('.close-btn')) {
-                        modal.classList.remove('active');
+                        modal.classList.remove('active', 'setup-mode');
                         // Limpiar campos de contraseña si se cierra el modal de clave maestra
                         if (modal.id === 'master-password-modal') {
                             document.getElementById('masterPasswordInput').value = '';
                             document.getElementById('masterPasswordError').style.display = 'none';
-                        }
+                            dom.mpModalTitle.textContent = getTranslation('mp_modal_title');
+                            dom.mpModalDesc.style.display = 'block';
+                            dom.mpAlertBox.style.display = 'none';
+                            document.getElementById('masterPasswordSubmitBtn').textContent = getTranslation('mp_modal_submit');
+                            }
                     }
                 });
                 modal.dataset.closeListenerAttached = 'true';
@@ -985,18 +1108,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 const modal = document.getElementById(modalId);
                 if (modal) {
                      modal.classList.add('active');
+                     
+                     // LÓGICA DE PAYPAL ACTUALIZADA
                      if (modalId === 'donate-modal' && typeof paypal !== 'undefined') {
-                         const paypalContainer = document.getElementById('paypal-container-5Y6FSK8RBQCQN');
-                         if (paypalContainer) {
-                             paypalContainer.innerHTML = '';
+                         const placeholder = document.getElementById('paypal-hosted-button-placeholder');
+                         if (placeholder) {
+                             placeholder.innerHTML = ''; // Limpiar por si acaso
                              try {
-                                 paypal.HostedButtons({ hostedButtonId: "5Y6FSK8RBQCQN" }).render("#paypal-container-5Y6FSK8RBQCQN");
+                                 paypal.HostedButtons({ hostedButtonId: "5Y6FSK8RBQCQN" }).render("#paypal-hosted-button-placeholder");
                              } catch (err) {
                                  console.error("PayPal button failed to render", err);
-                                 paypalContainer.innerHTML = '<p>Error al cargar el botón de donación.</p>';
+                                 placeholder.innerHTML = '<p>Error al cargar el botón de donación. Verifica tu conexión o revisa la configuración de PayPal.</p>';
                              }
                          }
                      }
+                     // FIN LÓGICA DE PAYPAL
                 }
             });
         });
@@ -1063,13 +1189,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedTheme = localStorage.getItem('theme') || 'light';
         const savedLang = localStorage.getItem('language') || 'es';
         
-        // NEW: Inicializar historial cifrado
+        // Inicializar historial cifrado
         cryptoLogic.loadInitialHistory();
 
         setTheme(savedTheme);
         setLanguage(savedLang);
-        setupEventListeners();
-        switchApp('generator'); // Carga la plantilla y llama a init() del generador
+        switchApp('generator'); 
+        setupEventListeners(); 
+        
         setupModalTriggers();
         setupFooterLinks();
     }

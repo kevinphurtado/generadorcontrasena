@@ -1756,6 +1756,26 @@ footer {
     .gen-checkbox-group {
         grid-template-columns: 1fr;
     }
+
+    /* 1. Apila los botones (Aleatoria, Memorizable, PIN) */
+        .gen-type-selector {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* 2. Reduce el tamaño de los botones de íconos (copiar, etc.) para dar más espacio */
+        .gen-icon-btn {
+            padding: 6px;
+            font-size: 1.0em;
+            width: 36px;
+            height: 36px;
+        }
+        
+        /* 3. Reduce la altura y fuente del display de contraseña para que quepa */
+        #passwordOutput {
+             height: 36px;
+             font-size: 1.1em; /* Reducido un poco de 1.3em */
+        }
     
     .ver-criteria {
         grid-template-columns: 1fr;
@@ -1769,8 +1789,48 @@ footer {
         height: 60px;
     }
     
-    /* Corrección extra de fuente para que quepa en la línea */
+
     .gen-complexity-check span:last-child {
         font-size: 0.75em !important; 
     }
+}
+/* NUEVOS ESTILOS PARA LA ALERTA DE CONFIGURACIÓN */
+.mp-alert-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    margin-bottom: 1.5rem;
+    border-radius: var(--border-radius-lg);
+    background-color: #e0f2fe; /* Color azul claro para una alerta informativa */
+    border: 1px solid #3b82f6; 
+    color: #1e40af;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+body.dark-mode .mp-alert-box {
+    background-color: rgba(59, 130, 246, 0.2);
+    border-color: #3b82f6;
+    color: #93c5fd;
+}
+
+.mp-alert-box i {
+    font-size: 1.5rem;
+    color: #3b82f6;
+    flex-shrink: 0;
+}
+
+.mp-alert-box p {
+    margin: 0;
+    color: inherit;
+    line-height: 1.4;
+}
+
+/* Reglas para alternar la visualización */
+#master-password-modal.setup-mode #mpModalDesc {
+    display: none;
+}
+#master-password-modal:not(.setup-mode) #mpAlertBox {
+    display: none;
 }

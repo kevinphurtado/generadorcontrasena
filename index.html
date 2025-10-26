@@ -70,7 +70,7 @@
                         <i class="fas fa-shield-alt"></i>
                         <span>miGenApp</span>
                     </div>
-                    <p class="footer-description">
+                    <p class="footer-description" data-translate-key="footer_description">
                         Herramienta de seguridad para generar y verificar contraseñas. 
                         100% seguro y privado, funciona directamente en tu navegador.
                     </p>
@@ -89,34 +89,34 @@
                 
                 <div class="footer-links-container">
                     <div class="footer-column">
-                        <h3>Herramientas</h3>
+                        <h3 data-translate-key="footer_tools_title">Herramientas</h3>
                         <ul>
-                            <li><a href="#" class="footer-link" data-app="generator">Generador de Contraseñas</a></li>
-                            <li><a href="#" class="footer-link" data-app="verifier">Verificador de Seguridad</a></li>
+                            <li><a href="#" class="footer-link" data-app="generator" data-translate-key="nav_generator">Generador de Contraseñas</a></li>
+                            <li><a href="#" class="footer-link" data-app="verifier" data-translate-key="nav_verifier">Verificador de Seguridad</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-column">
-                        <h3>Recursos</h3>
+                        <h3 data-translate-key="footer_resources_title">Recursos</h3>
                         <ul>
-                            <li><a href="https://www.policia.gov.co/ciberseguridad" target="_blank" rel="noopener noreferrer" class="footer-link">Guía de Seguridad</a></li>
-                            <li><a href="#" class="footer-link" data-navigate-to-faq="true">Preguntas Frecuentes</a></li>
+                            <li><a href="https://www.policia.gov.co/ciberseguridad" target="_blank" rel="noopener noreferrer" class="footer-link" data-translate-key="footer_security_guide">Guía de Seguridad</a></li>
+                            <li><a href="#" class="footer-link" data-navigate-to-faq="true" data-translate-key="faq_title">Preguntas Frecuentes</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-column">
-                        <h3>Legal</h3>
+                        <h3 data-translate-key="footer_legal_title">Legal</h3>
                         <ul>
-                            <li><a href="#" class="modal-trigger footer-link" data-modal="privacy-modal">Privacidad</a></li>
-                            <li><a href="#" class="footer-link" data-modal="terms-modal">Términos de Uso</a></li>
+                            <li><a href="#" class="modal-trigger footer-link" data-modal="privacy-modal" data-translate-key="footer_privacy">Privacidad</a></li>
+                            <li><a href="#" class="footer-link" data-modal="terms-modal" data-translate-key="footer_terms">Términos de Uso</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-column">
-                        <h3>Contribuir</h3>
+                        <h3 data-translate-key="footer_contribute_title">Contribuir</h3>
                         <ul>
-                            <li><a href="#" class="modal-trigger footer-link" data-modal="donate-modal">Donaciones</a></li>
-                            <li><a href="#" class="footer-link" data-modal="suggest-modal">Sugerir Función</a></li>
+                            <li><a href="#" class="modal-trigger footer-link" data-modal="donate-modal" data-translate-key="donate_button">Donaciones</a></li>
+                            <li><a href="#" class="footer-link" data-modal="suggest-modal" data-translate-key="footer_suggest">Sugerir Función</a></li>
                         </ul>
                     </div>
                 </div>
@@ -125,22 +125,28 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
                     <div class="copyright">
-                        <p>&copy; 2025 miGenApp. Desarrollado con <i class="fas fa-heart"></i> por <a href="https://chococreativo.com.co/proyectos" target="_blank" rel="noopener">Chocó Creativo</a></p>
+                        <p>
+                            <span data-translate-key="footer_copyright_base_text">&copy; 2025 miGenApp.</span> 
+                            <span data-translate-key="footer_developed_by">Desarrollado con</span> 
+                            <i class="fas fa-heart"></i> 
+                            <span data-translate-key="footer_by">por</span> 
+                            <a href="https://chococreativo.com.co/proyectos" target="_blank" rel="noopener">Chocó Creativo</a>
+                        </p>
                     </div>
                     <div class="footer-badges">
                         <span class="badge open-source">
                             <i class="fas fa-code-branch"></i>
-                            Código Abierto
+                            <span data-translate-key="footer_badge_open_source">Código Abierto</span>
                         </span>
                         <span class="badge secure">
                             <i class="fas fa-lock"></i>
-                            100% Seguro
+                            <span data-translate-key="footer_badge_secure">100% Seguro</span>
                         </span>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
+  </footer>
 
     <div id="copyMessage" class="copy-message" data-translate-key="copied_message">¡Copiado!</div>
 
@@ -197,31 +203,46 @@
     <div id="privacy-modal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-btn">&times;</button>
-            <h2>Política de privacidad</h2>
-            <p>Tu privacidad es nuestra prioridad. Todo el proceso de generación y verificación se realiza localmente en tu navegador. <strong>No guardamos, ni almacenamos, ni transmitimos ninguna de las contraseñas que generas o verificas.</strong></p>
-            <p>La única excepción es la verificación de exposición, que utiliza la API de "Have I Been Pwned" de forma segura, enviando solo los primeros 5 caracteres del hash SHA-1 de tu contraseña.</p>
+            <h2 data-translate-key="privacy_modal_title">Política de Privacidad</h2>
+            <p data-translate-key="privacy_modal_desc_p1">La privacidad es el pilar de miGenApp. Esta herramienta está diseñada para funcionar **100% en tu navegador**. Esto significa:</p>
+            <ul>
+                <li data-translate-key="privacy_modal_list_item1">**Sin Servidor:** Ningún dato, incluida tu Contraseña Maestra o las contraseñas generadas, se envía a un servidor externo.</li>
+                <li data-translate-key="privacy_modal_list_item2">**Almacenamiento Local:** Las contraseñas se guardan **cifradas** en tu navegador (`localStorage`) para que solo tú puedas acceder a ellas con tu Clave Maestra.</li>
+                <li data-translate-key="privacy_modal_list_item3">**Anonimato en Verificación:** El verificador de filtraciones utiliza la técnica de k-Anonimato (no se envía la contraseña completa) a la API de Have I Been Pwned.</li>
+            </ul>
         </div>
     </div>
     
     <div id="donate-modal" class="modal-overlay">
-        <div class="modal-content">
+        <div class="modal-content" style="text-align: center;">
             <button class="close-btn">&times;</button>
             <h2 data-translate-key="donate_modal_title">Apoya este proyecto</h2>
             <p data-translate-key="donate_modal_desc">Si esta herramienta te resulta útil, considera hacer una donación para apoyar su desarrollo y mantenimiento.</p>
-            <div id="paypal-container-5Y6FSK8RBQCQN"></div>
+            
+            <div id="paypal-button-container" style="margin-top: 1.5rem;">
+                <div id="paypal-hosted-button-placeholder"></div>
+            </div>
+
+            <p style="margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.9rem;" data-translate-key="donate_modal_thanks">¡Gracias por ayudar a mantener miGenApp libre y funcionando!</p>
         </div>
     </div>
     
     <div id="master-password-modal" class="modal-overlay">
         <div class="modal-content">
-            <p data-translate-key="mp_modal_desc">Introduce una clave para descifrar y gestionar tu historial de contraseñas guardadas.</p>
+            <button class="close-btn">&times;</button>
+            <h2 id="mpModalTitle" data-translate-key="mp_modal_title">Contraseña Maestra</h2>
+            
+            <div id="mpAlertBox" class="mp-alert-box" style="display: none;">
+                <i class="fas fa-lock"></i>
+                <p id="mpAlertText" data-translate-key="mp_modal_setup_desc">Esta clave cifrará la contraseña que acabas de generar y todas las futuras. ¡No la olvides!</p>
+            </div>
+            
+            <p id="mpModalDesc" data-translate-key="mp_modal_desc">Introduce una clave para descifrar y gestionar tu historial de contraseñas guardadas.</p>
             
             <form id="masterPasswordForm">
-                
-                <input type="text" autocomplete="username" class="hidden-input" title="Campo de usuario oculto" placeholder="Usuario" aria-hidden="true">
-                
+                <input type="text" autocomplete="username" style="position: absolute; left: -9999px;">
                 <div class="ver-password-wrapper" style="margin-bottom: 1rem;">
-                    <input type="password" id="masterPasswordInput" placeholder="Clave Maestra" required autocomplete="new-password">
+                    <input type="password" id="masterPasswordInput" placeholder="Clave Maestra" required autocomplete="new-password"> 
                     <span id="toggleMasterPassword" class="ver-eye-icon"><i class="fas fa-eye"></i></span>
                 </div>
                 <p id="masterPasswordError" style="color: var(--accent-weak); text-align: center; display: none; margin-top: -10px;"></p>
@@ -242,13 +263,12 @@
     <div id="terms-modal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-btn">&times;</button>
-            <h2>Términos de Uso</h2>
-            <p>Bienvenido a miGenApp. Al utilizar esta aplicación, aceptas los siguientes términos:</p>
-            <ol style="text-align: left; line-height: 1.6; margin-top: 1.5rem;">
-                <li style="margin-bottom: 1rem;"><strong>Uso Aceptable:</strong> Esta herramienta se proporciona "tal cual" para generar y verificar contraseñas. Eres responsable de su uso adecuado.</li>
-                <li style="margin-bottom: 1rem;"><strong>Sin Garantías:</strong> La herramienta se esfuerza por ser segura y privada. Sin embargo, no se ofrece ninguna garantía sobre su fiabilidad o idoneidad para un propósito específico.</li>
-                <li style="margin-bottom: 1rem;"><strong>Privacidad:</strong> Como se indica en la Política de Privacidad, la aplicación funciona 100% en el navegador del cliente. No se recopilan ni almacenan contraseñas.</li>
-                <li style="margin-bottom: 1rem;"><strong>Limitación de Responsabilidad:</strong> El desarrollador no será responsable de ninguna pérdida de datos o daños resultantes del uso (o incapacidad de uso) de esta aplicación.</li>
+            <h2 data-translate-key="terms_modal_title">Términos de Uso</h2>
+            <p data-translate-key="terms_modal_desc_p1">Al usar miGenApp, aceptas los siguientes términos:</p>
+            <ol>
+                <li style="margin-bottom: 1rem;" data-translate-key="terms_modal_list_item1">**Uso Personal:** Esta herramienta es para uso personal en la generación de contraseñas.</li>
+                <li style="margin-bottom: 1rem;" data-translate-key="terms_modal_list_item2">**Responsabilidad del Usuario:** Eres el único responsable de recordar tu Contraseña Maestra y de la seguridad de las contraseñas que generas. El desarrollador no puede recuperar claves perdidas.</li>
+                <li style="margin-bottom: 1rem;" data-translate-key="terms_modal_list_item3">**Limitación de Responsabilidad:** El desarrollador no será responsable de ninguna pérdida de datos o daños resultantes del uso (o incapacidad de uso) de esta aplicación.</li>
             </ol>
         </div>
     </div>
@@ -256,13 +276,13 @@
     <div id="suggest-modal" class="modal-overlay">
         <div class="modal-content" style="text-align: center;">
             <button class="close-btn">&times;</button>
-            <h2>Sugerir una Función</h2>
-            <p>¡Me encantaría escuchar tus ideas! La mejor manera de sugerir una nueva función o informar un error es enviándome un correo electrónico.</p>
-            <a href="mailto:agente.chococreativo@gmail.com" class="action-btn" style="text-decoration: none; margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <h2 data-translate-key="suggest_modal_title">Sugerir una Función</h2>
+            <p data-translate-key="suggest_modal_desc">¡Me encantaría escuchar tus ideas! La mejor manera de sugerir una nueva función o informar un error es enviándome un correo electrónico.</p>
+            <a href="mailto:agente.chococreativo@gmail.ccom" class="action-btn" style="text-decoration: none; margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
                 <i class="fas fa-envelope"></i>
-                agente.chococreativo@gmail.com
+                agente.chococreativo@gmail.ccom
             </a>
-            <p style="margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">Gracias por ayudar a mejorar miGenApp.</p>
+            <p style="margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.9rem;" data-translate-key="suggest_modal_thanks">Gracias por ayudar a mejorar miGenApp.</p>
         </div>
     </div>
 
