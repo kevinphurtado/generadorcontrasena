@@ -1,30 +1,42 @@
-|<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Generador & Verificador de Contraseñas</title>
+    <title>miGenApp - Generador & Verificador de Contraseñas</title>
     <meta name="description" content="Una herramienta todo-en-uno para generar y verificar la seguridad de tus contraseñas. Funciona 100% en tu navegador para garantizar la privacidad." />
     <meta name="hibp-verify" content="dweb_ahdeijzfd1heuyzt506088pw" />
+
+
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="https://chococreativo.com.co/proyectos/v-c/img/ico.png" />
+    <link rel="icon" type="image/png" href="img/miapp.png" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1054325758661906" crossorigin="anonymous"></script>
 </head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5CGSDVQG95"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-5CGSDVQG95');
 </script>
 <body>
     <div class="page-background"></div>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
 
     <header class="page-header">
+        <div class="header-brand">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>miGenApp</span>
+            </div>
+        </div>
         <div class="app-switcher">
             <label class="toggle-switch">
                 <input type="checkbox" id="appToggle" />
@@ -34,8 +46,9 @@
             </label>
         </div>
         <div class="controls">
-            <button class="control-btn" id="translateBtn" title="Translate"><i class="fas fa-language"></i></button>
+            <button class="control-btn" id="translateBtn" title="Traducir"><i class="fas fa-language"></i></button>
             <button class="control-btn" id="themeBtn" title="Cambiar tema"><i class="fas fa-moon"></i></button>
+            <button class="control-btn" id="infoBtn" title="Información"><i class="fas fa-info-circle"></i></button>
         </div>
     </header>
 
@@ -43,24 +56,91 @@
         </main>
     
     <footer>
-        
-    <div class="footer-content">
-        <div class="footer-column">
-            <p data-translate-key="footer_developed_by">© 2025 Desarrollado por </p>
-            <a href="https://chococreativo.com.co/proyectos" target="_blank">Chocó Creativo 🖤</a>
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
         </div>
-        
-        <div class="footer-column">
-            <nav class="footer-links">
-                <a href="#" class="modal-trigger" data-modal="privacy-modal" data-translate-key="footer_privacy">Privacidad 🔒</a>
-            </nav>
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>miGenApp</span>
+                    </div>
+                    <p class="footer-description">
+                        Herramienta de seguridad para generar y verificar contraseñas. 
+                        100% seguro y privado, funciona directamente en tu navegador.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://github.com/kevinphurtado/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/choco_creativo/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/chococreative" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-container">
+                    <div class="footer-column">
+                        <h3>Herramientas</h3>
+                        <ul>
+                            <li><a href="#" class="footer-link" data-app="generator">Generador de Contraseñas</a></li>
+                            <li><a href="#" class="footer-link" data-app="verifier">Verificador de Seguridad</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Recursos</h3>
+                        <ul>
+                            <li><a href="https://www.policia.gov.co/ciberseguridad" target="_blank" rel="noopener noreferrer" class="footer-link">Guía de Seguridad</a></li>
+                            <li><a href="#" class="footer-link" data-navigate-to-faq="true">Preguntas Frecuentes</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#" class="modal-trigger footer-link" data-modal="privacy-modal">Privacidad</a></li>
+                            <li><a href="#" class="footer-link" data-modal="terms-modal">Términos de Uso</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Contribuir</h3>
+                        <ul>
+                            <li><a href="#" class="modal-trigger footer-link" data-modal="donate-modal">Donaciones</a></li>
+                            <li><a href="#" class="footer-link" data-modal="suggest-modal">Sugerir Función</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        <p>&copy; 2025 miGenApp. Desarrollado con <i class="fas fa-heart"></i> por <a href="https://chococreativo.com.co/proyectos" target="_blank" rel="noopener">Chocó Creativo</a></p>
+                    </div>
+                    <div class="footer-badges">
+                        <span class="badge open-source">
+                            <i class="fas fa-code-branch"></i>
+                            Código Abierto
+                        </span>
+                        <span class="badge secure">
+                            <i class="fas fa-lock"></i>
+                            100% Seguro
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="footer-column">
-            <button class="action-btn modal-trigger" data-modal="donate-modal" data-translate-key="donate_button">Donar</button>
-        </div>
-    </div>
-    <p class="open-source-msg"><i class="fa-solid fa-code-branch"></i> <span data-translate-key="footer_open_source">Herramienta de código libre</span></p>
-</footer>
+    </footer>
 
     <div id="copyMessage" class="copy-message" data-translate-key="copied_message">¡Copiado!</div>
 
@@ -77,20 +157,118 @@
         </div>
     </div>
     
-    <div id="privacy-modal" class="modal-overlay"><div class="modal-content"><button class="close-btn">&times;</button><h2>Política de privacidad</h2><p>Tu privacidad es nuestra prioridad. Todo el proceso de generación y verificación se realiza localmente en tu navegador. <strong>No guardamos, ni almacenamos, ni transmitimos ninguna de las contraseñas que generas o verificas.</strong></p></div></div>
-    <div id="donate-modal" class="modal-overlay">
-      <div class="modal-content">
-        <button class="close-btn">&times;</button>
-        <h2 data-translate-key="donate_modal_title">Apoya este proyecto</h2>
-        <p data-translate-key="donate_modal_desc">Si esta herramienta te resulta útil, considera hacer una donación para apoyar su desarrollo y mantenimiento.</p>
-        <div id="paypal-container-5Y6FSK8RBQCQN"></div>
-      </div>
+    <div id="info-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2>Acerca de miGenApp</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>100% Privado</h3>
+                    <p>Todas las operaciones se realizan localmente en tu navegador</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Rápido</h3>
+                    <p>Genera y verifica contraseñas al instante</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsivo</h3>
+                    <p>Funciona perfecto en cualquier dispositivo</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-language"></i> 
+                    </div>
+                    <h3>Multilenguaje</h3>
+                    <p>Elige tu idioma desde el ícono en el menú.</p>
+                </div>
+            </div>
+        </div>
     </div>
     
+    <div id="privacy-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2>Política de privacidad</h2>
+            <p>Tu privacidad es nuestra prioridad. Todo el proceso de generación y verificación se realiza localmente en tu navegador. <strong>No guardamos, ni almacenamos, ni transmitimos ninguna de las contraseñas que generas o verificas.</strong></p>
+            <p>La única excepción es la verificación de exposición, que utiliza la API de "Have I Been Pwned" de forma segura, enviando solo los primeros 5 caracteres del hash SHA-1 de tu contraseña.</p>
+        </div>
+    </div>
+    
+    <div id="donate-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2 data-translate-key="donate_modal_title">Apoya este proyecto</h2>
+            <p data-translate-key="donate_modal_desc">Si esta herramienta te resulta útil, considera hacer una donación para apoyar su desarrollo y mantenimiento.</p>
+            <div id="paypal-container-5Y6FSK8RBQCQN"></div>
+        </div>
+    </div>
+    
+    <div id="master-password-modal" class="modal-overlay">
+        <div class="modal-content">
+            <p data-translate-key="mp_modal_desc">Introduce una clave para descifrar y gestionar tu historial de contraseñas guardadas.</p>
+            
+            <form id="masterPasswordForm">
+                
+                <input type="text" autocomplete="username" class="hidden-input" title="Campo de usuario oculto" placeholder="Usuario" aria-hidden="true">
+                
+                <div class="ver-password-wrapper" style="margin-bottom: 1rem;">
+                    <input type="password" id="masterPasswordInput" placeholder="Clave Maestra" required autocomplete="new-password">
+                    <span id="toggleMasterPassword" class="ver-eye-icon"><i class="fas fa-eye"></i></span>
+                </div>
+                <p id="masterPasswordError" style="color: var(--accent-weak); text-align: center; display: none; margin-top: -10px;"></p>
+                <button id="masterPasswordSubmitBtn" class="action-btn" style="width: 100%; margin-top: 10px;" data-translate-key="mp_modal_submit">Desbloquear Historial</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="qr-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2>Código QR de la contraseña</h2>
+            <div id="qrcode-container"></div>
+            <p class="qr-warning"><i class="fas fa-exclamation-triangle"></i> Comparte este código QR solo con personas de confianza en entornos seguros.</p>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2>Términos de Uso</h2>
+            <p>Bienvenido a miGenApp. Al utilizar esta aplicación, aceptas los siguientes términos:</p>
+            <ol style="text-align: left; line-height: 1.6; margin-top: 1.5rem;">
+                <li style="margin-bottom: 1rem;"><strong>Uso Aceptable:</strong> Esta herramienta se proporciona "tal cual" para generar y verificar contraseñas. Eres responsable de su uso adecuado.</li>
+                <li style="margin-bottom: 1rem;"><strong>Sin Garantías:</strong> La herramienta se esfuerza por ser segura y privada. Sin embargo, no se ofrece ninguna garantía sobre su fiabilidad o idoneidad para un propósito específico.</li>
+                <li style="margin-bottom: 1rem;"><strong>Privacidad:</strong> Como se indica en la Política de Privacidad, la aplicación funciona 100% en el navegador del cliente. No se recopilan ni almacenan contraseñas.</li>
+                <li style="margin-bottom: 1rem;"><strong>Limitación de Responsabilidad:</strong> El desarrollador no será responsable de ninguna pérdida de datos o daños resultantes del uso (o incapacidad de uso) de esta aplicación.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="suggest-modal" class="modal-overlay">
+        <div class="modal-content" style="text-align: center;">
+            <button class="close-btn">&times;</button>
+            <h2>Sugerir una Función</h2>
+            <p>¡Me encantaría escuchar tus ideas! La mejor manera de sugerir una nueva función o informar un error es enviándome un correo electrónico.</p>
+            <a href="mailto:agente.chococreativo@gmail.com" class="action-btn" style="text-decoration: none; margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-envelope"></i>
+                agente.chococreativo@gmail.com
+            </a>
+            <p style="margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">Gracias por ayudar a mejorar miGenApp.</p>
+        </div>
+    </div>
+
+
     <script src="https://www.paypal.com/sdk/js?client-id=BAAowbkGbCrbEnx8RrBHz8qELfBlAeQLKHQ0XBqpc1w2g0btRFSOg8iLhzqU6m2kAwiBtrKK1WRGCTNuco&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script src="script.js"></script>
 </body>
-<!-- Apoyado IA y desarrollado por Kevin Posso Hurtado 2025🖤 -->
-
 </html>
-
