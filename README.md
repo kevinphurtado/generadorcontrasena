@@ -1,78 +1,69 @@
-# Generador de contraseñas - miGEN
+# miGenApp - Generador y Verificador de Contraseñas
 
-[Captura](https://i.imgur.com/CEZE2Q5.png) 
+**[Ver Demo en Vivo](https://migenapp.lat)**
 
-Un generador de contraseñas seguro, moderno y de código abierto, creado con un enfoque en la seguridad, la privacidad y una excelente experiencia de usuario. Esta herramienta genera contraseñas complejas, memorables y códigos PIN directamente en tu dispositivo, asegurando que tus claves nunca salgan de tu navegador.
+miGenApp es una herramienta web todo-en-uno diseñada para ayudarte a crear y verificar la seguridad de tus contraseñas. Su principal característica es la privacidad: **todas las operaciones se realizan 100% en tu navegador**. Ninguna contraseña o dato sensible es enviado a un servidor.
+
+![Captura de pantalla de miGenApp](https://i.imgur.com/fYL1kQv.png)
 
 ---
 
 ## ✨ Características Principales
 
-* **Tres Modos de Generación:**
-    * `Aleatorio`: Crea contraseñas robustas con una mezcla personalizable de mayúsculas, minúsculas, números y símbolos.
-    * `Memorizable`: Genera frases de contraseña (passphrases) fáciles de recordar pero difíciles de descifrar, basadas en palabras.
-    * `PIN`: Crea códigos PIN numéricos de longitud variable.
-* **Métricas de Seguridad Avanzadas:**
-    * **Medidor de Fuerza Visual:** Evalúa la complejidad de tu contraseña en tiempo real.
-    * **Cálculo de Entropía:** Mide la aleatoriedad real de tu contraseña en bits.
-    * **Estimación de Tiempo de Crackeo:** Calcula cuánto tiempo tomaría a un atacante descifrar tu contraseña mediante fuerza bruta.
-* **100% Seguro y Privado:**
-    * Todas las contraseñas se generan **localmente en tu navegador** utilizando la API `window.crypto` para una aleatoriedad criptográficamente segura.
-    * Ninguna contraseña o dato es transmitido o almacenado fuera de tu dispositivo.
-* **Utilidades Adicionales:**
-    * **Historial Local:** Guarda tus últimas contraseñas generadas para un acceso rápido (con opción de exportar a `.csv`).
-    * **Código QR:** Transfiere de forma segura una contraseña a tu móvil escaneando un código QR.
-    * **Soporte Multilingüe:** Interfaz disponible en Español e Inglés.
-    * **Tema Claro y Oscuro:** Se adapta a las preferencias de tu sistema.
+### 🔐 Módulo Generador
+* **Generador Aleatorio:** Crea contraseñas criptográficamente seguras (`window.crypto`) con control total sobre la longitud y el set de caracteres (mayúsculas, minúsculas, números y símbolos).
+* **Generador Memorizable:** Genera frases de contraseña fáciles de recordar (usando listas de palabras en español e inglés), con opciones para capitalizar, añadir números, símbolos y separadores.
+* **Generador de PIN:** Crea códigos PIN numéricos de longitud variable.
+* **Análisis de Fortaleza:** Mide la entropía y el tiempo estimado de crackeo de la contraseña generada en tiempo real.
+* **Código QR:** Genera un código QR de tu contraseña para transferirla fácilmente a un dispositivo móvil.
+
+### 🛡️ Módulo Verificador
+* **Análisis Local:** Revisa la fortaleza de cualquier contraseña basándose en criterios clave (longitud, mayúsculas, números, etc.).
+* **Comprobación de Filtraciones (Pwned Passwords):** Utiliza la API de 'Have I Been Pwned' de forma 100% segura y anónima (usando **k-Anonymity**) para verificar si tu contraseña ha sido expuesta en una filtración de datos pública.
+
+### 🚀 Generales
+* **Privacidad Total:** Todo se ejecuta en el navegador. Las contraseñas nunca abandonan tu dispositivo.
+* **Historial Cifrado (AES):** Guarda tus contraseñas generadas en un historial local, protegido y cifrado con una **Clave Maestra** personal que solo tú conoces.
+* **Modo Oscuro/Claro:** Interfaz moderna y adaptable a las preferencias de tu sistema o con un botón de cambio manual.
+* **Multilenguaje:** Soporte completo para **Español** e **Inglés** en toda la interfaz.
+* **Diseño Responsivo:** Funciona perfectamente en computadoras de escritorio, tablets y dispositivos móviles.
 
 ---
 
-## 🚀 Instalación
+## 💻 Tech Stack
 
-Tienes dos formas de instalar y usar esta extensión:
+Este proyecto es una aplicación estática (JAMstack) construida sin *frameworks* de JavaScript, enfocada en la velocidad y la seguridad.
 
-### 1. Desde la Chrome Web Store (Próximamente)
-
-*Una vez que tu extensión sea publicada, podrás añadir el enlace aquí para una instalación sencilla.*
-
-`[Enlace a la Chrome Web Store]`
-
-### 2. Instalación Local (Para Desarrolladores)
-
-Si deseas probar la versión de desarrollo:
-
-1.  **Descarga o clona este repositorio:**
-    ```bash
-    git clone [https://github.com/kevinphurtado/generadorcontrasena.git](https://github.com/kevinphurtado/generadorcontrasena.git)
-    ```
-2.  Abre Google Chrome y ve a la página de extensiones: `chrome://extensions`.
-3.  Activa el **"Modo de desarrollador"** en la esquina superior derecha.
-4.  Haz clic en **"Cargar descomprimida"**.
-5.  Selecciona la carpeta del proyecto que clonaste.
-6.  ¡Listo! El ícono de la extensión aparecerá en tu barra de herramientas.
+* **HTML5**
+* **CSS3 Moderno:** (Variables CSS, Flexbox, Grid, Animaciones)
+* **JavaScript (Vanilla JS - ES6+):** Todo el código es JavaScript puro y modular.
+* **CryptoJS:** Utilizado para el cifrado AES del historial y el hashing SHA-256 de la clave maestra.
+* **APIs del Navegador:**
+    * `window.crypto`: Para la generación segura de números aleatorios.
+    * `fetch`: Para la consulta a la API de Pwned Passwords.
+* **Font Awesome:** Para la iconografía de la interfaz.
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## 🚀 Cómo Empezar
 
-Este proyecto fue construido desde cero con un enfoque en la simplicidad y el rendimiento, utilizando tecnologías web estándar:
+No se requiere instalación de dependencias ni un proceso de compilación.
 
-* **HTML5:** Para la estructura semántica del contenido.
-* **CSS3:** Para el diseño y la tematización (claro/oscuro) utilizando variables CSS.
-* **JavaScript (ES6+):** Lógica de la aplicación sin dependencias de frameworks (`Vanilla JS`).
-* **Web Crypto API:** Se utiliza `window.crypto.getRandomValues()` para garantizar una generación de números aleatorios criptográficamente segura, fundamental para la creación de contraseñas robustas.
+1.  Descarga o clona este repositorio.
+2.  Abre el archivo `index.html` en tu navegador web.
+
+Para probar todas las funcionalidades (especialmente la API de Pwned Passwords, que puede ser bloqueada por CORS en un entorno `file:///`), se recomienda servir los archivos desde un servidor local. La forma más fácil es usando la extensión **"Live Server"** en VS Code.
 
 ---
 
-## 👨‍💻 Autor
+## 👤 Autor
 
-Diseñado y desarrollado por **Kevin Hurtado**.
-
-* **Portafolio:** [chococreativo.com.co/proyectos](https://chococreativo.com.co/proyectos)
+* **Kevin Hurtado** (Chocó Creativo)
 * **GitHub:** [@kevinphurtado](https://github.com/kevinphurtado)
+* **Portafolio:** [chococreativo.com.co](https://chococreativo.com.co/proyectos)
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+Este proyecto está bajo la Licencia MIT.
